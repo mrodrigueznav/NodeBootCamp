@@ -1,0 +1,16 @@
+{
+    "dbServer": {
+        "host": "",
+        "user": "",
+        "password": "",
+        "database": "",
+        "dialect": "mssql",
+        "logging": false,
+        "dialectOptions": {
+          "encrypt": true,
+          "requestTimeout": 900000,
+          "options": { "requestTimeout": 900000 }
+        },
+        "encrypt": false
+    }
+}

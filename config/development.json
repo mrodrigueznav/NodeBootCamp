@@ -1,0 +1,16 @@
+{
+    "dbServer": {
+        "host": "gsya.database.windows.net",
+        "user": "lolwtfno",
+        "password": "X8ar924xg@",
+        "database": "shitdb",
+        "dialect": "mssql",
+        "logging": false,
+        "dialectOptions": {
+          "encrypt": true,
+          "requestTimeout": 900000,
+          "options": { "requestTimeout": 900000 }
+        },
+        "encrypt": false
+    }
+}
