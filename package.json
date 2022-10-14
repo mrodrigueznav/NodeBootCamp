@@ -18,5 +18,8 @@
     "joi": "^17.6.2",
     "sequelize": "^6.25.1",
     "tedious": "^15.1.0"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.5.1"
   }
 }

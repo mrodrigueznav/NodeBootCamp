@@ -17,13 +17,13 @@ app.get('/', (req, res) => {
     res.status(200).send('Hola Mundo');
 });
 
-db.sequelize.sync()
-    .then(() => {
-        console.log('Synced')
-    })
-    .catch((err) => {
-        console.log(err.message)
-    })
+// db.sequelize.sync()
+//     .then(() => {
+//         console.log('Synced')
+//     })
+//     .catch((err) => {
+//         console.log(err.message)
+//     })
 
 const port = process.env.PORT || 3002;
 app.listen(port, () => console.log(`Iniciado en puerto ${port}`));
