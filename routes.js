@@ -1,6 +1,6 @@
 const express = require('express');
 const sucursales = require('./routes/sucursales');
-const usuarios = require('./routes/users');
+const usuarios = require('./routes/usuarios');
 
 module.exports = function routes(app) {
     app.use(express.urlencoded({extended: true}))

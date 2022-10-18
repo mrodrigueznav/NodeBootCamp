@@ -1,32 +1,34 @@
-const express = require('express')
+const express = require('express');
 const db = require('../models')
 const router = express.Router();
 
-const usersdb = db.users
+const Usuariodb = db.Usuario
+const Empleadodb = db.Empleado
 
 router.get('/', async (req, res) => {
-    const allUsuarios = await usersdb.findAll()
+    const allUsuarios = await Usuariodb.findAll({
+        // include: [{model: Empleadodb}]
+    })
     res.status(200).send(allUsuarios);
 });
 
-router.get('/:id', (req, res) => {
-    // const sucursal = sucursales.find(i => i.id === parseInt(req.params.id))
-    // if (!sucursal) res.status(400).send('Esa sucursal no existe')
-    // res.status(200).send(sucursal);
+router.get('/:id', async (req, res) => {
+    const { id } =  req.params
+    const usuario = await Usuariodb.findByPk(id)
+    res.status(200).send(usuario);
 });
 
 router.post('/', async (req, res) => {
     const {username, password} = req.body
-    const userexists = await usersdb.findOne({
+    const userexists = await Usuariodb.findOne({
         where: {
             username
         }
     })
-    console.log(userexists)
     if (userexists) {
         return res.status(400).send('Ese nombre de usuario ya existe')
     }
-    const newUser = await usersdb.create({
+    const newUser = await Usuariodb.create({
         username,
         password
     })

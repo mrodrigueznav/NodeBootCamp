@@ -1,10 +1,10 @@
 {
   "development": {
-    "username": "lolwtfno",
-    "password": "X8ar924xg@",
-    "database": "shitdb",
-    "host": "gsya.database.windows.net",
-    "dialect": "mssql"
+    "username": "",
+    "password": "",
+    "database": "",
+    "host": "",
+    "dialect": ""
   },
   "test": {
     "username": "root",
