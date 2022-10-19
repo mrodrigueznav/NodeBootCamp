@@ -1,15 +1,16 @@
 const express = require('express');
+const auth = require('../middleware/auth')
 const db = require('../models')
 const router = express.Router();
 
 const Usuariodb = db.Usuario
 const Empleadodb = db.Empleado
 
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
     const allUsuarios = await Usuariodb.findAll({
-        // include: [{model: Empleadodb}]
+        include: [{model: Empleadodb}]
     })
-    res.status(200).send(allUsuarios);
+    res.status(200).send(req.token);
 });
 
 router.get('/:id', async (req, res) => {
@@ -19,17 +20,18 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const {username, password} = req.body
+    const {usuario, password} = req.body
     const userexists = await Usuariodb.findOne({
+        include: [{model: Empleadodb}],
         where: {
-            username
+            usuario
         }
     })
     if (userexists) {
         return res.status(400).send('Ese nombre de usuario ya existe')
     }
     const newUser = await Usuariodb.create({
-        username,
+        usuario,
         password
     })
     return res.status(200).send(newUser)

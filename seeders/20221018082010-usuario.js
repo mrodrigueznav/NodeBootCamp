@@ -18,6 +18,12 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
       empleadoId: 1
+    }, {
+      usuario: 'rrangel2',
+      password: 'password',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      empleadoId: 2
     }], {});
   },
 

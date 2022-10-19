@@ -17,6 +17,11 @@ module.exports = {
        nombre: 'Roman Rangel',
        createdAt: new Date(),
        updatedAt: new Date()
+     }, {
+      noEmpleado: '012316',
+      nombre: 'Ramon Rangel',
+      createdAt: new Date(),
+      updatedAt: new Date()
      }], {});
   },
 
