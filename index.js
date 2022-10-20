@@ -1,20 +1,21 @@
 const config = require('config')
 const express = require('express');
 const app = express();
-const logger = require('./logger')
+const morganMiddleware = require('./middleware/morgan')
+const error = require('./middleware/error')
+const logger = require('./utils/logger')
 const helmet = require('helmet')
 const db = require('./models/')
 
 app.use(helmet())
+app.use(morganMiddleware)
 require('./routes')(app)
 
-if (app.get('env') === 'development') {
-    app.use(logger)
-    console.log('Logger habilitado')
-}
+
 
 app.get('/', (req, res) => {
-    res.status(200).send('Hola Mundo');
+    logger.info('Probando')
+    res.status(200).send({codigo: 'XYZ', mensaje: 'Hola Mundo'});
 });
 
 // db.sequelize.sync()

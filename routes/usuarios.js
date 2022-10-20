@@ -1,3 +1,4 @@
+const { application } = require('express');
 const express = require('express');
 const auth = require('../middleware/auth')
 const db = require('../models')
@@ -6,7 +7,9 @@ const router = express.Router();
 const Usuariodb = db.Usuario
 const Empleadodb = db.Empleado
 
-router.get('/', auth, async (req, res) => {
+router.use(auth)
+
+router.get('/', async (req, res) => {
     const allUsuarios = await Usuariodb.findAll({
         include: [{model: Empleadodb}]
     })

@@ -1,4 +1,6 @@
 const express = require('express')
+const auth = require('../middleware/auth')
+const admin = require('../middleware/admin')
 const Joi = require('joi');
 const router = express.Router();
 
@@ -8,7 +10,7 @@ const sucursales  = [
     { id: 3, nombre: 'Guadalajara'},
 ]
 
-router.get('/', (req, res) => {
+router.get('/', [auth, admin], (req, res) => {
     res.status(200).send(sucursales);
 });
 
